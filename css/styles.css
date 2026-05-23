@@ -1,0 +1,1106 @@
+/* ==========================================================================
+   WHISPERS OF THE EARTH - PREMIUM NARRATIVE CSS DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+    /* Immersive Nature color palette */
+    --forest-bg: #050e09;
+    --canopy-green: #091a10;
+    --stream-blue: #081d24;
+    --peak-orange: #21120e;
+    
+    --text-primary: #f5efe6; /* soft sand white */
+    --text-muted: #a39b8f;
+    --accent-gold: #ffbd59; /* warm glowing sun */
+    --accent-cyan: #52e5ff; /* stream cyan */
+    --accent-green: #59ffb3; /* canopy green */
+    
+    --glass-fill: rgba(245, 239, 230, 0.04);
+    --glass-border: rgba(245, 239, 230, 0.08);
+    --glass-border-hover: rgba(255, 189, 89, 0.25);
+    
+    --font-serif: 'Cinzel', serif;
+    --font-sans: 'Outfit', sans-serif;
+    --transition-speed: 0.8s;
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset and Global lock */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--forest-bg);
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background-color: var(--forest-bg);
+    /* Dynamic color transitions as you scroll! */
+    transition: background-color var(--transition-speed) var(--ease-smooth);
+}
+
+/* Gameplay/Ambient Canvas */
+#natureCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* let clicks pass through to standard links */
+    display: block;
+}
+
+/* Floating Audio Panel */
+.audio-control-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 50;
+}
+
+.audio-panel {
+    background: rgba(5, 14, 9, 0.6);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    padding: 0.8rem 1.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s var(--ease-smooth);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.audio-panel:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 4px 25px rgba(255, 189, 89, 0.15);
+    transform: translateY(-2px);
+}
+
+.audio-panel.active {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+.music-note-emoji {
+    display: inline-block;
+    animation: swayWind 3s infinite ease-in-out alternate;
+}
+
+/* ==========================================================================
+   IMMERSIVE NARRATIVE SECTIONS
+   ========================================================================== */
+.narrative-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+    z-index: 2;
+}
+
+.section-content {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 1. HERO SECTION */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 50% 50%, rgba(9, 26, 16, 0.3) 0%, rgba(5, 14, 9, 0.7) 100%);
+}
+
+.hero-text-align {
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-accent {
+    color: var(--accent-green);
+    font-size: 0.85em;
+    font-weight: 400;
+    letter-spacing: 8px;
+    display: block;
+    margin-top: 10px;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.95rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 2px;
+    max-width: 600px;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Scroll Arrow indicators */
+.scroll-hint {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.scroll-arrow {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    animation: bounceDown 2s infinite;
+}
+
+.scroll-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CHAPTER EDITORIAL LAYOUT
+   ========================================================================== */
+.chapter-indicator {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.chapter-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.chapter-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+}
+
+/* Immersive Editorial Grids */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+}
+
+.narrative-card {
+    border-radius: 16px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-fill);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    transition: border-color 0.4s var(--ease-smooth),
+                box-shadow 0.4s var(--ease-smooth),
+                transform 0.4s var(--ease-smooth);
+}
+
+.narrative-card:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 12px 40px 0 rgba(255, 189, 89, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Grid card mappings */
+.text-card {
+    grid-column: span 7;
+}
+
+.text-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.text-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.quote-card {
+    grid-column: span 5;
+    background: rgba(255,255,255,0.01);
+}
+
+.quote-card blockquote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.quote-card cite {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+    font-style: normal;
+}
+
+.detail-card {
+    grid-column: span 12;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.card-metric {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent-gold);
+    text-shadow: 0 4px 15px rgba(255, 189, 89, 0.15);
+}
+
+.detail-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+/* Reverse layout mapping */
+.row-reverse {
+    direction: ltr; /* keep text alignment normal */
+}
+.row-reverse .text-card {
+    grid-column: 6 / span 7;
+}
+.row-reverse .quote-card {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+}
+
+/* Custom glow borders based on chapters */
+.blue-glow {
+    border-color: rgba(82, 229, 255, 0.06);
+}
+.blue-glow:hover {
+    border-color: rgba(82, 229, 255, 0.25);
+    box-shadow: 0 12px 40px 0 rgba(82, 229, 255, 0.05);
+}
+.blue-glow .card-metric {
+    color: var(--accent-cyan);
+    text-shadow: 0 4px 15px rgba(82, 229, 255, 0.15);
+}
+.blue-glow cite {
+    color: var(--accent-cyan);
+}
+
+.gold-glow {
+    border-color: rgba(255, 189, 89, 0.06);
+}
+.gold-glow:hover {
+    border-color: rgba(255, 189, 89, 0.25);
+}
+
+/* ==========================================================================
+   CLIMAX SUNSET COUPLE SECTION (HIGH FIDELITY)
+   ========================================================================== */
+.couple-climax {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #120704;
+    padding: 0;
+}
+
+/* Immersive background image deck using AAAA.png */
+.couple-background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../AAAA.png'); /* Path relative to /css/styles.css -> /AAAA.png */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0.82;
+    /* Immersive sticky parallax scale */
+    transform: scale(1.05);
+    transition: transform 1.2s var(--ease-smooth);
+}
+
+/* Subtle dark sky overlay gradient */
+.couple-climax::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, 
+                rgba(33, 18, 14, 0.8) 0%, 
+                rgba(18, 7, 4, 0.2) 40%, 
+                rgba(18, 7, 4, 0.75) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.climax-content-align {
+    position: relative;
+    z-index: 5;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 4rem 0;
+}
+
+.accent-glow {
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(255, 189, 89, 0.4);
+}
+
+.climax-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 6px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Intersecting Glass Card */
+.climax-narrative-box {
+    background: rgba(18, 7, 4, 0.45);
+    border: 1px solid rgba(255, 189, 89, 0.15);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    max-width: 700px;
+    width: 100%;
+}
+
+.climax-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--text-primary);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.climax-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(245, 239, 230, 0.1);
+    padding-top: 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.heart-emoji {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+/* ==========================================================================
+   ANIMATIONS KEYFRAMES & UTILITIES
+   ========================================================================== */
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+@keyframes swayWind {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+.animate-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s var(--ease-smooth) forwards;
+}
+
+.animate-fade-in-delay {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s var(--ease-smooth) 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Climax background overlay */
+.hero-climax {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../hero_bg.png'); /* Path relative to css/styles.css */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0.32; /* soft transparency to ensure text contrast */
+    transform: scale(1.0);
+    transition: transform 1.2s var(--ease-smooth);
+}
+
+.hero-quote {
+    background: rgba(245, 239, 230, 0.03);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 1.2rem 2rem;
+    margin-top: 2rem;
+    max-width: 500px;
+    z-index: 5;
+}
+
+.hero-quote p {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-primary);
+}
+
+.hero-quote cite {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   SPLIT LAYOUT & STICKY COLUMN IMAGES
+   ========================================================================== */
+.split-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 3.5rem;
+    width: 100%;
+    align-items: start;
+}
+
+.split-narrative {
+    grid-column: span 7;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.split-image-column {
+    grid-column: span 5;
+}
+
+.sticky-image-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    z-index: 5;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s var(--ease-smooth), border-color 0.5s;
+}
+
+.sticky-image-container:hover {
+    border-color: var(--glass-border-hover);
+    transform: scale(1.01) translateY(-2px);
+}
+
+.blue-glow-shadow {
+    box-shadow: 0 15px 40px rgba(82, 229, 255, 0.1);
+    border-color: rgba(82, 229, 255, 0.08);
+}
+.blue-glow-shadow:hover {
+    border-color: rgba(82, 229, 255, 0.3);
+}
+
+.gold-glow-shadow {
+    box-shadow: 0 15px 40px rgba(255, 189, 89, 0.1);
+    border-color: rgba(255, 189, 89, 0.08);
+}
+.gold-glow-shadow:hover {
+    border-color: rgba(255, 189, 89, 0.3);
+}
+
+.split-cover-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-caption {
+    background: rgba(5, 14, 9, 0.85);
+    border-top: 1px solid var(--glass-border);
+    padding: 0.8rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Reverse mappings */
+.split-layout.row-reverse .split-narrative {
+    grid-column: 6 / span 7;
+}
+
+.split-layout.row-reverse .split-image-column {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .split-narrative {
+        grid-column: span 12;
+    }
+    .split-image-column {
+        grid-column: span 12;
+    }
+    .split-layout.row-reverse .split-narrative {
+        grid-column: span 12;
+    }
+    .split-layout.row-reverse .split-image-column {
+        grid-column: span 12;
+        grid-row: auto;
+    }
+    .sticky-image-container {
+        position: static; /* disable sticky on small screens */
+    }
+    .split-cover-img {
+        height: 380px; /* smaller height on mobile */
+    }
+    
+    .text-card { grid-column: span 12; }
+    .quote-card { grid-column: span 12; }
+    .row-reverse .text-card { grid-column: span 12; }
+    .row-reverse .quote-card { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
+    .narrative-section { padding: 4rem 1.5rem; }
+    .detail-card { flex-direction: column; text-align: center; gap: 1rem; }
+    .climax-narrative-box { padding: 2rem; }
+    .audio-control-container { bottom: 1rem; left: 1rem; }
+    .audio-panel { padding: 0.6rem 1.1rem; font-size: 0.7rem; }
+}
+
+/* ==========================================================================
+   INTRO PRELOADER OVERLAY SYSTEM
+   ========================================================================== */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    background: rgba(5, 14, 9, 0.88);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s var(--ease-smooth), visibility 0.8s;
+}
+
+.intro-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-glass-card {
+    background: rgba(245, 239, 230, 0.04);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 3.5rem;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.intro-icon-sway {
+    font-size: 3rem;
+    animation: swayWind 3s infinite ease-in-out alternate;
+}
+
+.intro-message {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.8;
+    font-style: italic;
+    color: var(--text-primary);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* Typewriter blinking cursor */
+.typewriter-cursor {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 300;
+    color: var(--accent-gold);
+    animation: cursorBlink 0.75s step-end infinite;
+    margin-left: 2px;
+}
+
+.typewriter-cursor.hidden {
+    opacity: 0;
+    animation: none;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Slim progress bar at bottom of card */
+.intro-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(245, 239, 230, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.intro-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-gold));
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   OUTSTANDING BOUNCY EXPLORE NATURE BUTTON
+   ========================================================================== */
+.bouncy-nature-btn {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 1.1rem 2.8rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #050e09;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ff7e47 100%);
+    box-shadow: 0 10px 30px rgba(255, 126, 71, 0.4),
+                inset 0 4px 0 rgba(255, 255, 255, 0.25);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    margin-top: 1.5rem;
+}
+
+.bouncy-nature-btn:hover {
+    transform: scale(1.04) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 126, 71, 0.6),
+                inset 0 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+.bouncy-nature-btn:active {
+    transform: scale(0.98) translateY(0);
+}
+
+/* ==========================================================================
+   IMMERSIVE NATURE CAROUSEL EXPLORER SCREEN
+   ========================================================================== */
+.explorer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: #050e09;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s var(--ease-smooth), visibility 0.6s;
+    pointer-events: auto;
+}
+
+.explorer-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Close btn */
+.explorer-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    line-height: 1;
+    transition: color 0.3s;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.explorer-close-btn:hover {
+    color: var(--accent-gold);
+}
+
+/* Slide structures */
+.carousel-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* Fullscreen Background Layer inside slide */
+.slide-bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0.85; /* vivid contrast and highly visible gorgeous scenery */
+    transform: scale(1.05);
+    transition: transform 1.5s var(--ease-smooth);
+}
+
+.carousel-slide.active .slide-bg-layer {
+    transform: scale(1.0);
+}
+
+/* Glass card overlapping visual descriptions */
+.slide-glass-card {
+    background: rgba(5, 14, 9, 0.65);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 3.5rem;
+    max-width: 680px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    z-index: 15;
+    text-align: center;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.8s var(--ease-smooth) 0.2s, opacity 0.8s 0.2s;
+}
+
+.carousel-slide.active .slide-glass-card {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+}
+
+.slide-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+}
+
+.slide-desc {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* Floating Prev/Next Carousel Controllers */
+.carousel-control-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(245, 239, 230, 0.03);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    line-height: 52px;
+    cursor: pointer;
+    z-index: 110;
+    transition: all 0.3s var(--ease-smooth);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.carousel-control-btn:hover {
+    border-color: var(--accent-gold);
+    background: rgba(255, 189, 89, 0.1);
+    color: var(--accent-gold);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.left-btn { left: 2.5rem; }
+.right-btn { right: 2.5rem; }
+
+/* Carousel Bullets */
+.carousel-bullets {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 110;
+    display: flex;
+    gap: 12px;
+}
+
+.bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(245, 239, 230, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bullet.active {
+    background: var(--accent-gold);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
+/* ==========================================================================
+   POLISHED ECOLOGICAL ALERT BAR AT BOTTOM
+   ========================================================================== */
+.ecological-alert-bar {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 110;
+    background: rgba(33, 18, 14, 0.75); /* sunset reddish dark tone */
+    border: 1px solid rgba(255, 189, 89, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 16px;
+    padding: 1.2rem 2rem;
+    max-width: 780px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.alert-icon-sway {
+    font-size: 1.8rem;
+    animation: swayWind 4s infinite ease-in-out alternate;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+.ecological-alert-text {
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS OVERRIDES
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .split-narrative {
+        grid-column: span 12;
+    }
+    .split-image-column {
+        grid-column: span 12;
+    }
+    .split-layout.row-reverse .split-narrative {
+        grid-column: span 12;
+    }
+    .split-layout.row-reverse .split-image-column {
+        grid-column: span 12;
+        grid-row: auto;
+    }
+    .sticky-image-container {
+        position: static; /* disable sticky on small screens */
+    }
+    .split-cover-img {
+        height: 380px; /* smaller height on mobile */
+    }
+    
+    .text-card { grid-column: span 12; }
+    .quote-card { grid-column: span 12; }
+    .row-reverse .text-card { grid-column: span 12; }
+    .row-reverse .quote-card { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
+    .narrative-section { padding: 4rem 1.5rem; }
+    .detail-card { flex-direction: column; text-align: center; gap: 1rem; }
+    .climax-narrative-box { padding: 2rem; }
+    .audio-control-container { bottom: 1rem; left: 1rem; }
+    .audio-panel { padding: 0.6rem 1.1rem; font-size: 0.7rem; }
+    
+    /* Preloader Mobile */
+    .intro-glass-card { padding: 2rem 1.5rem; }
+    
+    /* Carousel mobile overrides */
+    .slide-glass-card { padding: 2rem 1.5rem; }
+    .carousel-control-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        line-height: 36px;
+    }
+    .left-btn { left: 0.75rem; }
+    .right-btn { right: 0.75rem; }
+    
+    /* Close Btn Mobile */
+    .explorer-close-btn {
+        top: 1.2rem;
+        right: 1.2rem;
+        font-size: 2.2rem;
+    }
+    
+    /* Ecological bar mobile positioning */
+    .ecological-alert-bar {
+        bottom: 1.2rem;
+        padding: 0.8rem 1.2rem;
+        gap: 0.75rem;
+    }
+    .alert-icon-sway { font-size: 1.3rem; }
+}
