@@ -210,24 +210,11 @@
         <!-- Close trigger -->
         <button id="btnCloseExplorer" class="explorer-close-btn" title="Return to Horizon">&times;</button>
 
-        <!-- Left/Right Floating Carousel Controls -->
-        <button id="btnPrevSlide" class="carousel-control-btn left-btn" title="Previous Realm">&#8249;</button>
-        <button id="btnNextSlide" class="carousel-control-btn right-btn" title="Next Realm">&#8250;</button>
-
-        <!-- Slide Indicators -->
-        <div class="carousel-bullets">
-            <span class="bullet active" data-index="0"></span>
-            <span class="bullet" data-index="1"></span>
-            <span class="bullet" data-index="2"></span>
-            <span class="bullet" data-index="3"></span>
-            <span class="bullet" data-index="4"></span>
-        </div>
-
-        <!-- Carousel Slides Wrapper -->
-        <div class="carousel-wrapper">
+        <!-- Scrollable Slides Wrapper -->
+        <div class="explorer-scroll-wrapper">
             
             <!-- Slide 1: Forest Canopy -->
-            <div class="carousel-slide active">
+            <div class="scroll-slide">
                 <div class="slide-bg-layer" style="background-image: url('canopy_forest.png?v=1.4');"></div>
                 <div class="slide-glass-card glass-panel">
                     <div class="slide-category">REALM I: CANOPY</div>
@@ -238,8 +225,8 @@
                 </div>
             </div>
 
-            <!-- Slide 2: Animals (Misty Deer) -->
-            <div class="carousel-slide">
+            <!-- Slide 2: Animals (Fauna) -->
+            <div class="scroll-slide">
                 <div class="slide-bg-layer" style="background-image: url('explore_animals.png?v=1.4');"></div>
                 <div class="slide-glass-card glass-panel">
                     <div class="slide-category">REALM II: FAUNA</div>
@@ -251,7 +238,7 @@
             </div>
 
             <!-- Slide 3: Streams (Water Veins) -->
-            <div class="carousel-slide">
+            <div class="scroll-slide">
                 <div class="slide-bg-layer" style="background-image: url('stream_river.png?v=1.4');"></div>
                 <div class="slide-glass-card glass-panel">
                     <div class="slide-category">REALM III: VEINS</div>
@@ -263,7 +250,7 @@
             </div>
 
             <!-- Slide 4: Sea Turtles (The Coral Ocean) -->
-            <div class="carousel-slide">
+            <div class="scroll-slide">
                 <div class="slide-bg-layer" style="background-image: url('explore_sea.png?v=1.4');"></div>
                 <div class="slide-glass-card glass-panel">
                     <div class="slide-category">REALM IV: SEA</div>
@@ -275,7 +262,7 @@
             </div>
 
             <!-- Slide 5: Peaks (Mountain Heights) -->
-            <div class="carousel-slide">
+            <div class="scroll-slide">
                 <div class="slide-bg-layer" style="background-image: url('peak_mountain.png?v=1.4');"></div>
                 <div class="slide-glass-card glass-panel">
                     <div class="slide-category">REALM V: SUMMIT</div>
@@ -286,16 +273,19 @@
                 </div>
             </div>
 
-        </div>
+            <!-- Slide 6: Climax Message (Our Responsibility) -->
+            <div class="scroll-slide climax-warning-slide">
+                <div class="slide-bg-layer" style="background-image: url('BBBB.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel warning-card">
+                    <div class="slide-category">THE SACRED TRUST</div>
+                    <h3 class="slide-title" style="color: var(--accent-gold);">OUR SOLEMN DUTY</h3>
+                    <p class="slide-desc" style="font-size: 1.15rem; font-style: italic; line-height: 1.8; color: var(--text-primary);">
+                        "This beautiful planet is a sacred masterpiece created by God, yet through our own actions, we are slowly destroying its delicate canvas. We must cherish, protect, and take care of it before its whispers fall silent forever."
+                    </p>
+                </div>
+            </div>
 
-        <!-- OUTSTANDING GLOBAL ECOLOGICAL ALERT BAR AT BOTTOM -->
-        <div class="ecological-alert-bar glass-panel">
-            <span class="alert-icon-sway">⚠️</span>
-            <p class="ecological-alert-text">
-                "This planet was created as a magnificent masterpiece, yet our modern touch is slowly destroying its delicate canvas. We must take care of it, before the whispers of the earth fall silent."
-            </p>
         </div>
-
     </div>
 
     <!-- Dynamic Wave Dividers for Section Transitions (CSS SVG Elements) -->

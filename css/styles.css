@@ -800,7 +800,7 @@ body {
 }
 
 /* ==========================================================================
-   IMMERSIVE NATURE CAROUSEL EXPLORER SCREEN
+   IMMERSIVE NATURE SCROLLABLE EXPLORER SCREEN
    ========================================================================== */
 .explorer-overlay {
     position: fixed;
@@ -810,11 +810,13 @@ body {
     height: 100%;
     z-index: 100;
     background-color: #050e09;
-    overflow: hidden;
+    overflow-y: auto; /* enable long vertical scrolling! */
+    overflow-x: hidden;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.6s var(--ease-smooth), visibility 0.6s;
     pointer-events: auto;
+    scroll-behavior: smooth;
 }
 
 .explorer-overlay.open {
@@ -822,59 +824,59 @@ body {
     visibility: visible;
 }
 
-/* Close btn */
+/* Close btn - Fixed on top right of the viewport */
 .explorer-close-btn {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2.5rem;
     font-size: 3rem;
     font-weight: 300;
     color: var(--text-primary);
-    background: transparent;
-    border: none;
+    background: rgba(5, 14, 9, 0.5);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     cursor: pointer;
-    z-index: 120;
+    z-index: 150; /* float above everything else */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     line-height: 1;
-    transition: color 0.3s;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s var(--ease-smooth);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .explorer-close-btn:hover {
     color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    transform: scale(1.05) rotate(90deg);
+    background: rgba(255, 189, 89, 0.1);
 }
 
-/* Slide structures */
-.carousel-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Scroll wrapper container */
+.explorer-scroll-wrapper {
     width: 100%;
-    height: 100%;
-    z-index: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Scroll slides */
+.scroll-slide {
+    position: relative;
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 5;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
+    box-sizing: border-box;
+    padding: 6rem 2rem;
+    overflow: hidden;
 }
 
-.carousel-slide.active {
-    opacity: 1;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-/* Fullscreen Background Layer inside slide */
+/* Fullscreen Background Layer inside slide - beautiful parallax on desktop */
 .slide-bg-layer {
     position: absolute;
     top: 0;
@@ -884,22 +886,18 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
     z-index: 0;
-    opacity: 0.85; /* vivid contrast and highly visible gorgeous scenery */
-    transform: scale(1.05);
-    transition: transform 1.5s var(--ease-smooth);
-}
-
-.carousel-slide.active .slide-bg-layer {
+    opacity: 0.85; /* Vivid high contrast */
     transform: scale(1.0);
 }
 
 /* Glass card overlapping visual descriptions */
 .slide-glass-card {
-    background: rgba(5, 14, 9, 0.65);
+    background: rgba(5, 14, 9, 0.72);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 24px;
     padding: 3.5rem;
     max-width: 680px;
@@ -907,14 +905,12 @@ body {
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     z-index: 15;
     text-align: center;
-    transform: translateY(30px);
-    opacity: 0;
-    transition: transform 0.8s var(--ease-smooth) 0.2s, opacity 0.8s 0.2s;
+    transition: transform 0.8s var(--ease-smooth);
 }
 
-.carousel-slide.active .slide-glass-card {
-    transform: translateY(0);
-    opacity: 1;
+.slide-glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-border-hover);
 }
 
 .slide-category {
@@ -941,97 +937,12 @@ body {
     font-weight: 300;
 }
 
-/* Floating Prev/Next Carousel Controllers */
-.carousel-control-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(245, 239, 230, 0.03);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: var(--text-primary);
-    font-size: 2.2rem;
-    line-height: 52px;
-    cursor: pointer;
-    z-index: 110;
-    transition: all 0.3s var(--ease-smooth);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.carousel-control-btn:hover {
-    border-color: var(--accent-gold);
-    background: rgba(255, 189, 89, 0.1);
-    color: var(--accent-gold);
-    transform: translateY(-50%) scale(1.05);
-}
-
-.left-btn { left: 2.5rem; }
-.right-btn { right: 2.5rem; }
-
-/* Carousel Bullets */
-.carousel-bullets {
-    position: absolute;
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 110;
-    display: flex;
-    gap: 12px;
-}
-
-.bullet {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(245, 239, 230, 0.2);
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.bullet.active {
-    background: var(--accent-gold);
-    transform: scale(1.2);
-    box-shadow: 0 0 10px var(--accent-gold);
-}
-
-/* ==========================================================================
-   POLISHED ECOLOGICAL ALERT BAR AT BOTTOM
-   ========================================================================== */
-.ecological-alert-bar {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 110;
-    background: rgba(33, 18, 14, 0.75); /* sunset reddish dark tone */
-    border: 1px solid rgba(255, 189, 89, 0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-radius: 16px;
-    padding: 1.2rem 2rem;
-    max-width: 780px;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: left;
-}
-
-.alert-icon-sway {
-    font-size: 1.8rem;
-    animation: swayWind 4s infinite ease-in-out alternate;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-}
-
-.ecological-alert-text {
-    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
-    color: var(--text-primary);
-    line-height: 1.5;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+/* Glowing climax warning card */
+.warning-card {
+    border: 1px solid rgba(255, 189, 89, 0.35);
+    background: rgba(18, 7, 4, 0.78);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8),
+                0 0 30px rgba(255, 189, 89, 0.08);
 }
 
 /* ==========================================================================

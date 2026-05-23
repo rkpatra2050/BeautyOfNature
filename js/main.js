@@ -70,7 +70,9 @@ class NatureController {
         if (this.dom.btnOpenExplorer) {
             this.dom.btnOpenExplorer.addEventListener('click', () => {
                 if (this.dom.explorerOverlay) {
+                    this.dom.explorerOverlay.scrollTop = 0; // scroll back to top of Realm I
                     this.dom.explorerOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden'; // lock background scrolling
                 }
             });
         }
@@ -78,6 +80,7 @@ class NatureController {
             this.dom.btnCloseExplorer.addEventListener('click', () => {
                 if (this.dom.explorerOverlay) {
                     this.dom.explorerOverlay.classList.remove('open');
+                    document.body.style.overflow = ''; // restore background scrolling
                 }
             });
         }
