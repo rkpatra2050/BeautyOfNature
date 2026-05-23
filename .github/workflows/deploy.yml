@@ -5,18 +5,25 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# Required permissions for the Pages deployment flow
 permissions:
-  contents: write
+  pages: write
+  id-token: write
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    name: Build and Deploy
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # Upload the repository root (static site) as the Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: '.'
+          path: './'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
