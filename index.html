@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Whispers of the Earth | An Immersive Nature Story</title>
+    <meta name="description" content="Embark on a visual journey through the Canopy, the Stream, and the Peak. Explore the silent connection of forests, the flow of rivers, and the quiet peak sunsets.">
+    <!-- Google Fonts: Cinzel (Luxury Editorial Serif) & Outfit (Modern Organic Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=1.4">
+</head>
+<body>
+
+    <!-- 0. IMMERSIVE FLOATING INTRO SCREEN (BREAK FROM CODE) -->
+    <div id="introScreen" class="intro-overlay active">
+        <div class="intro-glass-card">
+            <div class="intro-icon-sway">🍃</div>
+            <p class="intro-message">
+                <span id="typewriterText"></span><span class="typewriter-cursor">|</span>
+            </p>
+            <div class="intro-progress-bar">
+                <div id="introProgressFill" class="intro-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Immersive Background Canvas for floating leaves, bubbles, and sunset motes -->
+    <canvas id="natureCanvas"></canvas>
+
+    <!-- FLOATING SOUNDSCAPE CONTROLLER -->
+    <div class="audio-control-container">
+        <button id="btnToggleAudio" class="audio-panel glass-panel" title="Listen to Procedural Wind & Chimes">
+            <span class="music-note-emoji">🍃</span> <span id="audioStatusText">UNMUTE SOUNDSCAPE</span>
+        </button>
+    </div>
+
+    <!-- MAIN NARRATIVE LAYOUT -->
+    <main id="scrollContainer">
+
+        <!-- 1. HERO ENTERING PAGE WITH BACKGROUND IMAGE -->
+        <section id="hero" class="narrative-section hero-climax">
+            <!-- Fullscreen Nature Hero Background Overlay -->
+            <div class="hero-background-layer"></div>
+            
+            <div class="section-content hero-text-align">
+                <h1 class="hero-title animate-fade-in">WHISPERS<br><span class="hero-accent">OF THE EARTH</span></h1>
+                <p class="hero-subtitle animate-fade-in-delay">A slow, breathing journey through nature's quiet kingdoms.</p>
+                
+                <div class="hero-quote glass-panel animate-fade-in-delay">
+                    <p>"In all things of nature there is something of the marvelous."</p>
+                    <cite>— Aristotle</cite>
+                </div>
+
+                <div class="scroll-hint">
+                    <span class="scroll-arrow">↓</span>
+                    <span class="scroll-text">SCROLL TO DRIFT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CHAPTER I: THE CANOPY -->
+        <section id="chapter-canopy" class="narrative-section">
+            <div class="section-content">
+                <div class="chapter-indicator">CHAPTER I</div>
+                <h2 class="chapter-title">THE CANOPY</h2>
+                <p class="chapter-subtitle">Where trees speak in silent frequencies below the moss.</p>
+                
+                <div class="split-layout">
+                    <!-- Left: Narrative Cards -->
+                    <div class="split-narrative">
+                        <div class="narrative-card glass-panel text-card">
+                            <h3>The Secret Network</h3>
+                            <p>Underneath the damp soil of the emerald forest lies a vast, silent web. Trees are not isolated individuals; they are connected by microscopic fungal threads—a wood-wide-web. Through this network, ancient mother trees share sugars, alert neighbors of incoming threats, and nurture their small saplings.</p>
+                        </div>
+
+                        <div class="narrative-card glass-panel quote-card">
+                            <blockquote>
+                                "Between every two pines there is a sacred door leading to a new way of life."
+                            </blockquote>
+                            <cite>— John Muir</cite>
+                        </div>
+
+                        <div class="narrative-card glass-panel detail-card">
+                            <div class="card-metric">80%</div>
+                            <p>of the forest's life exists high above the forest floor, in the secret leaf-roof canopy, thriving in sunlight and breathing the earth's damp mist.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Sticky Cover Image -->
+                    <div class="split-image-column">
+                        <div class="sticky-image-container">
+                            <img src="canopy_forest.png" class="split-cover-img" alt="Canopy Ancient Redwood Forest">
+                            <div class="image-caption">The Silent Giants of the Emerald Canopy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CHAPTER II: THE STREAM -->
+        <section id="chapter-stream" class="narrative-section">
+            <div class="section-content">
+                <div class="chapter-indicator">CHAPTER II</div>
+                <h2 class="chapter-title">THE STREAM</h2>
+                <p class="chapter-subtitle">The flowing veins carrying the memory of glaciers.</p>
+
+                <div class="split-layout row-reverse">
+                    <!-- Right: Narrative Cards -->
+                    <div class="split-narrative">
+                        <div class="narrative-card glass-panel text-card">
+                            <h3>The Flowing Memory</h3>
+                            <p>Water is the great traveler. Every droplet flowing down the mountain stream has climbed high into storm clouds, slept as winter ice on alpine peaks, and slipped silently through the deep stone pores of the earth. In its flow, it carries nutrients, sculpts canyon cliffs, and feeds the deep roots of the valley below.</p>
+                        </div>
+
+                        <div class="narrative-card glass-panel quote-card blue-glow">
+                            <blockquote>
+                                "Water does not struggle. It flows around obstacles, adapting to the contours of the earth, and finds the ocean by simply letting go."
+                            </blockquote>
+                            <cite>— Organic Zen Wisdom</cite>
+                        </div>
+
+                        <div class="narrative-card glass-panel detail-card blue-glow">
+                            <div class="card-metric">10k</div>
+                            <p>years are stored in alpine glacial streams, carrying fresh minerals down to feed the wetlands and oceans.</p>
+                        </div>
+                    </div>
+
+                    <!-- Left: Sticky Cover Image -->
+                    <div class="split-image-column">
+                        <div class="sticky-image-container blue-glow-shadow">
+                            <img src="stream_river.png" class="split-cover-img" alt="Glacial Mountain Stream">
+                            <div class="image-caption">Glacial Veins Flowing Over Golden Stone</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CHAPTER III: THE PEAK -->
+        <section id="chapter-peak" class="narrative-section">
+            <div class="section-content">
+                <div class="chapter-indicator">CHAPTER III</div>
+                <h2 class="chapter-title">THE PEAK</h2>
+                <p class="chapter-subtitle">Where alpine winds meet the high quiet sunset.</p>
+
+                <div class="split-layout">
+                    <!-- Left: Narrative Cards -->
+                    <div class="split-narrative">
+                        <div class="narrative-card glass-panel text-card gold-glow">
+                            <h3>The Highlands</h3>
+                            <p>Up here, above the tree-line, life grows small, resilient, and patient. The alpine peaks stand as silent guardians. In these quiet heights, the atmosphere thins, and the sunset reflects off granite walls, casting long shadows of gold, pink, and dark amber across the clouds.</p>
+                        </div>
+
+                        <div class="narrative-card glass-panel quote-card gold-glow">
+                            <blockquote>
+                                "The mountains are calling, and I must go, to find where the clouds rest and the sun fades into the silent valley."
+                            </blockquote>
+                            <cite>— Alpine Explorer</cite>
+                        </div>
+
+                        <div class="narrative-card glass-panel detail-card gold-glow">
+                            <div class="card-metric">8k</div>
+                            <p>meters of granite and ice stand as silent witnesses to the slow, ancient tectonic shifts of our living planet.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Sticky Cover Image -->
+                    <div class="split-image-column">
+                        <div class="sticky-image-container gold-glow-shadow">
+                            <img src="peak_mountain.png" class="split-cover-img" alt="Sunset Mountain Peaks">
+                            <div class="image-caption">Granite Guardians Reflecting Warm Amber Sunset</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CLIMAX: THE SUNSET DECK (Shared Couple Image Section) -->
+        <section id="chapter-deck" class="narrative-section couple-climax">
+            <!-- Fullscreen Sunset Couple Background Overlay -->
+            <div class="couple-background-layer"></div>
+
+            <div class="section-content climax-content-align">
+                <div class="chapter-indicator accent-glow">THE CLIMAX</div>
+                <h2 class="climax-title">THE HORIZON</h2>
+                
+                <div class="climax-narrative-box glass-panel">
+                    <p class="climax-text">
+                        "To look into the horizon is to find yourself in the harmony of all things. The forests that breathe, the rivers that flow, the peaks that reach, and the quiet space we share under the fading sun."
+                    </p>
+                    <div class="climax-footer">
+                        <span>A Moment of Quiet Harmony</span>
+                        <div class="heart-emoji">🍂🌅</div>
+                    </div>
+                </div>
+
+                <!-- OUTSTANDING EXPLORE THE BEAUTY OF NATURE TRIGGER -->
+                <button id="btnOpenExplorer" class="bouncy-nature-btn animate-fade-in-delay">
+                    EXPLORE THE BEAUTY OF NATURE 🏔️
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 6. IMMERSIVE NATURE CAROUSEL EXPLORER OVERLAY -->
+    <div id="explorerOverlay" class="explorer-overlay">
+        <!-- Close trigger -->
+        <button id="btnCloseExplorer" class="explorer-close-btn" title="Return to Horizon">&times;</button>
+
+        <!-- Scrollable Slides Wrapper -->
+        <div class="explorer-scroll-wrapper">
+            
+            <!-- Slide 1: Forest Canopy -->
+            <div class="scroll-slide">
+                <div class="slide-bg-layer" style="background-image: url('canopy_forest.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel">
+                    <div class="slide-category">REALM I: CANOPY</div>
+                    <h3 class="slide-title">THE PRIMEVAL FOREST</h3>
+                    <p class="slide-desc">
+                        The ancient forests are the lung of our world. Towering redwoods, some breathing for thousands of years, generate the oxygen we breathe and harbor ancient mycorrhizal networks where mother trees communicate silently in damp mossy shadows.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Animals (Fauna) -->
+            <div class="scroll-slide">
+                <div class="slide-bg-layer" style="background-image: url('explore_animals.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel">
+                    <div class="slide-category">REALM II: FAUNA</div>
+                    <h3 class="slide-title">THE GENTLE SOULS</h3>
+                    <p class="slide-desc">
+                        From the silent antlers of the woodland deer to the birds chirping in hidden branches, the animal kingdom thrives in absolute harmony. They are co-creators of our ecosystems, reminding us that we are but visitors in their sacred groves.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Streams (Water Veins) -->
+            <div class="scroll-slide">
+                <div class="slide-bg-layer" style="background-image: url('stream_river.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel">
+                    <div class="slide-category">REALM III: VEINS</div>
+                    <h3 class="slide-title">THE GLACIAL STREAM</h3>
+                    <p class="slide-desc">
+                        Mountain rivers flow endlessly down granite cliffs, carrying the ancient memory of glaciers. Water is a shape-shifter, carving deep rocky paths, feeding damp meadows, and nourishing life across wetlands until it reunites with the sea.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 4: Sea Turtles (The Coral Ocean) -->
+            <div class="scroll-slide">
+                <div class="slide-bg-layer" style="background-image: url('explore_sea.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel">
+                    <div class="slide-category">REALM IV: SEA</div>
+                    <h3 class="slide-title">THE CORAL OCEAN</h3>
+                    <p class="slide-desc">
+                        Below the blue waves lies a silent world of pure magic. Breathtaking coral reefs glow like subaquatic gardens, while sea turtles and schools of tropical fish glide smoothly through solar rays piercing the deep blue oceans.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 5: Peaks (Mountain Heights) -->
+            <div class="scroll-slide">
+                <div class="slide-bg-layer" style="background-image: url('peak_mountain.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel">
+                    <div class="slide-category">REALM V: SUMMIT</div>
+                    <h3 class="slide-title">THE SACRED SUMMITS</h3>
+                    <p class="slide-desc">
+                        Alpine towers rise proudly above rolling seas of clouds, reflecting the sun's amber and violet twilight. These towering sentinels stand as silent guardians of geological time, where the mountain breeze hums the earth's oldest tales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 6: Climax Message (Our Responsibility) -->
+            <div class="scroll-slide climax-warning-slide">
+                <div class="slide-bg-layer" style="background-image: url('BBBB.png?v=1.4');"></div>
+                <div class="slide-glass-card glass-panel warning-card">
+                    <div class="slide-category">THE SACRED TRUST</div>
+                    <h3 class="slide-title" style="color: var(--accent-gold);">OUR SOLEMN DUTY</h3>
+                    <p class="slide-desc" style="font-size: 1.15rem; font-style: italic; line-height: 1.8; color: var(--text-primary);">
+                        "This beautiful planet is a sacred masterpiece created by God, yet through our own actions, we are slowly destroying its delicate canvas. We must cherish, protect, and take care of it before its whispers fall silent forever."
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Dynamic Wave Dividers for Section Transitions (CSS SVG Elements) -->
+    <div class="wave-divider-top"></div>
+
+    <script type="module" src="js/main.js?v=1.4"></script>
+</body>
+</html>
