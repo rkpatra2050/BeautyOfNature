@@ -39,9 +39,11 @@ jobs:
           echo "Current permissions: pages: ${{ env.permissions_pages || 'not set' }}"
           
       - name: Test upload-pages-artifact action
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: './'
+          if-no-files-found: warn
           
       - name: Check if artifact was created
         run: |

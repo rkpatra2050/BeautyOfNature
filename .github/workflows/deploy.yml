@@ -23,32 +23,37 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          name: Deploy Static Content to Pages
+name: Deploy Static Content to Pages
 
-          on:
-            push:
-              branches: ["main"]
-            workflow_dispatch:
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
-          # Required permissions for the Pages deployment flow
-          permissions:
-            pages: write
-            id-token: write
-            contents: read
+# Required permissions for the Pages deployment flow
+permissions:
+  pages: write
+  id-token: write
+  contents: read
 
-          jobs:
-            deploy:
-              runs-on: ubuntu-latest
-              name: Build and Deploy
-              steps:
-                - name: Checkout repository
-                  uses: actions/checkout@v4
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-                # Upload the repository root (static site) as the Pages artifact
-                - name: Upload Pages artifact
-                  uses: actions/upload-pages-artifact@v2
-                  with:
-                    path: './'
+      # Upload the repository root (static site) as artifact using v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: './'
+          if-no-files-found: warn
 
-                - name: Deploy to GitHub Pages
-                  uses: actions/deploy-pages@v1
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
