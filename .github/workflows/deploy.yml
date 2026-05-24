@@ -14,31 +14,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Upload the repository root (static site) as the Pages artifact
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-name: Deploy Static Content to Pages
-
-on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
-
-# Required permissions for the Pages deployment flow
-permissions:
-  pages: write
-  id-token: write
-  contents: read
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
