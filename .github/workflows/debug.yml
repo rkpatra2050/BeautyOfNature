@@ -1,0 +1,49 @@
+name: Debug Actions and Pages Setup
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Show runner environment
+        run: |
+          echo "=== Runner Info ==="
+          uname -a
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          echo "Git version: $(git --version)"
+          
+      - name: Check workflow permissions
+        run: |
+          echo "=== Job Context (permissions) ==="
+          echo "GITHUB_TOKEN is set: ${{ secrets.GITHUB_TOKEN != '' }}"
+          echo "Job status: ${{ job.status }}"
+          
+      - name: List repo contents
+        run: |
+          echo "=== Repository root contents ==="
+          ls -lah /home/runner/work/BeautyOfNature/BeautyOfNature/ || ls -lah ./
+          echo "=== Subdirectories ==="
+          find . -maxdepth 2 -type d | head -20
+          
+      - name: Check artifact upload permissions
+        run: |
+          echo "=== Checking Pages & Artifact Permissions ==="
+          echo "Current permissions: pages: ${{ env.permissions_pages || 'not set' }}"
+          
+      - name: Test upload-pages-artifact action
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './'
+          
+      - name: Check if artifact was created
+        run: |
+          echo "=== Artifact Upload Status ==="
+          echo "If you see this, artifact upload succeeded!"
